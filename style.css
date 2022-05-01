@@ -1,0 +1,52 @@
+*{
+    list-style-type: none;
+    
+}
+body {
+    background-color: lightseagreen;
+}
+ol {
+    position: absolute;
+    height: 50vh;
+    z-index: 2;
+}
+li{
+   
+    text-align: center;
+    margin-bottom: 20px;
+    
+    border-style: solid;
+    border-radius: 5%;
+    border-color: blue;
+    background-color: skyblue;
+    box-shadow: 3px 3px;
+    
+}
+
+#headline {
+    display: flex;
+    height: 8vh;
+    
+}
+#box1 {
+    height: 80vh;
+    max-width: 100%;
+    border-style: dotted;
+    z-index: 1;
+    display: flex;
+    
+    
+}
+#box2 {
+    width: 90vw;
+    border-style: dashed;
+}
+#drops {
+    width: 10vw;
+    border-style: dashed;
+    border-right-style: dotted;
+}
+#foot {
+    height: 8vh;
+    
+}
