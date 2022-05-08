@@ -5,21 +5,36 @@
 body {
     background-color: lightseagreen;
 }
-ol {
+.hl {
+    display: flex;
+    z-index: -1;
+}
+h1 {
+    position: relative;
+    animation: moveRight 20s infinite;
+}
+h2 {  
+    float: right;
+    position: relative;
+    animation: moveLeft 20s infinite;
+}
+#menu {
+    
     position: absolute;
-    height: 50vh;
+    background-color: aqua;
     z-index: 2;
 }
 li{
    
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     
     border-style: solid;
-    border-radius: 5%;
+    border-top-left-radius: 25%;
     border-color: blue;
     background-color: skyblue;
     box-shadow: 3px 3px;
+  
     
 }
 
@@ -50,3 +65,59 @@ li{
     height: 8vh;
     
 }
+#operators{
+    background-color: midnightblue;
+}
+#border {
+    border-style: solid;
+}
+
+#menu li {
+    position: relative;
+    animation: moveMenu 20s infinite;
+}
+
+@keyframes moveRight {
+    from {left: 0vw;}
+    to {left:100vw;}
+}
+@keyframes moveLeft {
+    from {left: 100vw;}
+    to {left: 0vw;}   
+}
+@keyframes moveMenu {
+    0% {left: 0px; top: 0px;}
+    50%{left: -25px; top: 0px;}
+    100%{left: 0px; top: 0px;}
+}
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 900px) {
+    body {
+      background-color: olive;
+    }
+    #menu {
+        position: fixed;
+        margin-top: 80vh;
+        overflow:hidden;
+      
+        
+       
+    }
+    li{
+        float: left;
+        text-align: center;
+        margin-bottom: 4px;
+        margin-right: 2px;
+        border-style: solid;
+        border-radius: 5%;
+        border-color: blue;
+        background-color: skyblue;
+        box-shadow: 3px 3px;
+        
+    }
+    @keyframes moveMenu {
+        0% {left: 0px; top: 0px;}
+        50%{left: -5px; top: 0px;}
+        100%{left: 0px; top: 0px;}
+    }
+  }
