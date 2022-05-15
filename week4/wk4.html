@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+:root {
+  --purple: orange;
+}
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--purple);
+  font-family: sans-serif;
+}
+/* makes width and height the same   */
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 54px;
+  text-transform: uppercase;
+}
+
+.container {
+  padding: 40px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* background-color: #e78af7; */
+}
+
+#gameboard {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 450px;
+}
+
+.box {
+  height: 150px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 150px;
+  color: var(--purple);
+}
+
+.box:hover {
+  cursor: pointer;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: var(--purple);
+  color: white;
+  border-color: var(--purple);
+  font-size: 18px;
+  transition: 200ms transform;
+}
+
+button:hover {
+  cursor: pointer;
+  transform: translateY(-2px);
+}
+</style>
+</head>
+<body>
+<!-- .container creates a div with the class of container -->
+<div class="container">
+<!-- h1#playText creates an h1 with id of playText-->    
+   <h1 id="playText">Let's Play</h1>
+ <!-- button#restartBtn creates a button with id of restartBtn -->  
+   <button id="restartBtn">Restart</button>
+ <!-- #gameboard>.box*9#1 creates a div with id of gameboard that contains 9 divs with a class of box and id of 1 -->  
+   <div id="gameboard">
+     <div class="box" id="0"></div>
+     <div class="box" id="1"></div>
+     <div class="box" id="2"></div>
+     <div class="box" id="3"></div>
+     <div class="box" id="4"></div>
+     <div class="box" id="5"></div>
+     <div class="box" id="6"></div>
+     <div class="box" id="7"></div>
+     <div class="box" id="8"></div>
+   </div>
+ </div>
+                                                                    <!-- Start Javascript -->
+<script>
+	const gameboard = document.getElementById("gameboard");
+const boxes = Array.from(document.getElementsByClassName("box"));
+const restartBtn = document.getElementById("restartBtn");
+const playText = document.getElementById("playText");
+const spaces = [null, null, null, null, null, null, null, null, null];
+const O_TEXT = "O";
+const X_TEXT = "X";
+let currentPlayer = O_TEXT;
+
+const drawBoard = () => {
+  boxes.forEach((box, index) => {
+    let styleString = "";
+    if (index < 3) {
+      styleString += `border-bottom: 3px solid var(--purple);`;
+    }
+    if (index % 3 === 0) {
+      styleString += `border-right: 3px solid var(--purple);`;
+    }
+    if (index % 3 === 2) {
+      styleString += `border-left: 3px solid var(--purple);`;
+    }
+    if (index > 5) {
+      styleString += `border-top: 3px solid var(--purple);`;
+    }
+    box.style = styleString;
+
+    box.addEventListener("click", boxClicked);
+  });
+};
+
+function boxClicked(e) {
+  const id = e.target.id;
+  if (!spaces[id]) {
+    spaces[id] = currentPlayer;
+    e.target.innerText = currentPlayer;
+    if (hasPlayerWon(currentPlayer)) {
+      playText.innerHTML = `${currentPlayer} wins!!`;
+      return;
+    }
+    currentPlayer = currentPlayer === O_TEXT ? X_TEXT : O_TEXT;
+  }
+}
+
+const hasPlayerWon = (player) => {
+  //from top left, check across, down, and diagonal
+  if (spaces[0] === player) {
+    if (spaces[1] === player && spaces[2] === player) {
+      console.log(`${player} wins up top`);
+      return true;
+    }
+    if (spaces[3] === player && spaces[6] === player) {
+      console.log(`${player} wins on the left`);
+      return true;
+    }
+    if (spaces[4] === player && spaces[8] === player) {
+      console.log(`${player} wins on the diagonal`);
+      return true;
+    }
+  }
+  //from bottom check up and across
+  if (spaces[8] === player) {
+    if (spaces[2] === player && spaces[5] === player) {
+      console.log(`${player} wins on the right`);
+      return true;
+    }
+    if (spaces[7] === player && spaces[6] === player) {
+      console.log(`${player} wins on the bottom`);
+      return true;
+    }
+  }
+  //from middle check middle vertical and middle horizontal
+  if (spaces[4] === player) {
+    if (spaces[3] === player && spaces[5] === player) {
+      console.log(`${player} wins on the middle horizontal`);
+      return true;
+    }
+    if (spaces[1] === player && spaces[7] === player) {
+      console.log(`${player} wins on the middle vertical`);
+      return true;
+    }
+  }
+};
+
+restartBtn.addEventListener("click", () => {
+  spaces.forEach((space, index) => {
+    spaces[index] = null;
+  });
+  boxes.forEach((box) => {
+    box.innerText = "";
+  });
+  playText.innerHTML = `Let's Play!!`;
+
+  currentPlayer = O_TEXT;
+});
+
+drawBoard();
+</script>
+</body>
+</html>
+
