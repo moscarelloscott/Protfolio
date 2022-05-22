@@ -3,14 +3,7 @@ import comments from './comments-list.js';
 import Comment from './Comment.js';
 import model from './model.js';
 
-
-
-// This app uses an MVC (model, view, controller) pattern
-'use strict'
-
 const imgBasePath = "//byui-cit.github.io/cit261/examples/";
-
-
 
     const controller = {
         load() {
