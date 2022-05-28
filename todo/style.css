@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    
+    height: vh50; 
+    background-color: skyblue;
+    background-image: linear-gradient(to bottom right, skyblue, indigo, darkblue);
+    color: aquamarine;
+    font-family: cursive;
+    min-height: 100vh;
+}
+
+.box{
+    border-style: solid;
+    max-width: 80%;
+    margin: auto;
+    border-top-left-radius: 50px;
+}
+
+header {
+    font-size: 1.5rem;
+}
+
+header,form {
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input, button {
+    padding: o.5rem;
+    font-size: 2rem;
+    border-style: double;
+    border-color: coral;
+    border-radius: 5px;
+    border-width: 5px;
+    color: coral;
+    background-color: darkblue;
+    
+}
+
+input:hover, button:hover{
+    background-color: blue;
+    border-style: ridge;
+    color: white;
+}
+
+button{
+    cursor: pointer;
+}
+
+.todoContainer {
+    /* margin auto does not print list width correctly */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todoList {
+    min-width: 30%;
+    list-style: none;
+}
+
+.todo {
+    margin: 0.5rem;
+    background-color: aliceblue;
+    color: black;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.todo li {
+    flex: 1;
+}
