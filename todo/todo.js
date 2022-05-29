@@ -49,7 +49,7 @@ function deleteCheck(e) {
 
     // cross out
     if(item.classList[0] === "complete-btn") {
-        const todo = item.parenteElement;
+        const todo = item.parentElement;
         todo.classList.toggle("completed");
 
     }
