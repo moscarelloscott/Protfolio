@@ -78,17 +78,25 @@ button{
 }
 .todo li {
     /* moves the check and del boxes to the right */
-    flex: 1;
+    /*flex: 1;*/
+    order: 2;
 }
 
 .trash-btn, .complete-btn {
     border-style: ridge;
 }
 .complete-btn{
-    color: green;
+    order: 1;
+    background-color: rgb(112, 4, 22);
+    color: red;
+}
+.complete-btn:active{
+    color: black;
+    background-color: black;
 }
 .trash-btn{
     color: red;
+    order: 3;
 }
 
 .fa-trash-can, .fa-check {
