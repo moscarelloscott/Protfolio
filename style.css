@@ -1,11 +1,11 @@
-*{
-    list-style-type: none;
-    
+*{  
+    list-style-type: none;   
 }
 body {
     background-color: lightseagreen;
+    background-image: linear-gradient(to bottom right, rgb(235, 212, 135), rgb(255, 255, 255), rgb(128, 43, 0));
 }
-.hl {
+.hl {   
     display: flex;
     z-index: -1;
 }
@@ -13,29 +13,26 @@ h1 {
     position: relative;
     animation: moveRight 20s infinite;
 }
-h2 {  
+h2 {     
     float: right;
     position: relative;
     animation: moveLeft 20s infinite;
 }
-#menu {
-    
-    position: absolute;
-    background-color: aqua;
-    z-index: 2;
-}
-li{
-   
+#menu {     
     text-align: center;
-    margin-bottom: 10px;
-    
+   /*position: absolute;*/   
+    z-index: 2;
+    width: 100vw;
+}
+
+li{ 
+    text-align: center;
+    margin-bottom: 10px;    
     border-style: solid;
     border-top-left-radius: 25%;
     border-color: blue;
     background-color: skyblue;
-    box-shadow: 3px 3px;
-  
-    
+    box-shadow: 3px 3px;  
 }
 
 #headline {
@@ -44,26 +41,28 @@ li{
     
 }
 #box1 {
-    height: 80vh;
+    height: 72vh;
     max-width: 100%;
     border-style: dotted;
     z-index: 1;
-    display: flex;
-    
-    
+    display: flex;  
 }
 #box2 {
     width: 90vw;
     border-style: dashed;
 }
 #drops {
-    width: 10vw;
+    text-align: center;
+    width: 5vw;
     border-style: dashed;
     border-right-style: dotted;
 }
 #foot {
-    height: 8vh;
-    
+    display: flex;  
+    height: 20vh;    
+}
+#foot1 {
+    z-index: -1;
 }
 #operators{
     background-color: midnightblue;
@@ -73,17 +72,22 @@ li{
 }
 
 #menu li {
+    flex-wrap: wrap;
+    text-align: center;
+    padding-right: 2px;
+    margin: 2px;
+    float: left;
     position: relative;
     animation: moveMenu 20s infinite;
 }
 
 @keyframes moveRight {
-    from {left: 0vw;}
-    to {left:100vw;}
+    from {left: 10vw;}
+    to {left:60vw;}
 }
 @keyframes moveLeft {
-    from {left: 100vw;}
-    to {left: 0vw;}   
+    from {left: 70vw;}
+    to {left: 40vw;}   
 }
 @keyframes moveMenu {
     0% {left: 0px; top: 0px;}
@@ -92,21 +96,10 @@ li{
 }
 /* On screens that are 600px or less, set the background color to olive */
 @media screen and (max-width: 900px) {
-    body {
-      background-color: olive;
-    }
-    #menu {
-        position: fixed;
-        margin-top: 80vh;
-        overflow:hidden;
-      
-        
-       
-    }
+    
     li{
         float: left;
         text-align: center;
-        margin-bottom: 4px;
         margin-right: 2px;
         border-style: solid;
         border-radius: 5%;
@@ -121,3 +114,4 @@ li{
         100%{left: 0px; top: 0px;}
     }
   }
+
