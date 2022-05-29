@@ -72,9 +72,30 @@ button{
     color: black;
     font-size: 1.5rem;
     display: flex;
+    /* space between will have equal spaces for list, check, and del */
     justify-content: space-between;
     align-items: center;
 }
 .todo li {
+    /* moves the check and del boxes to the right */
     flex: 1;
+}
+
+.trash-btn, .complete-btn {
+    border-style: ridge;
+}
+.complete-btn{
+    color: green;
+}
+.trash-btn{
+    color: red;
+}
+
+.fa-trash-can, .fa-check {
+    pointer-events: none;
+}
+
+.completedButton {
+    text-decoration: line-through;
+    opacity: 0.5;
 }
