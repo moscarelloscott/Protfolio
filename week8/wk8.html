@@ -1,47 +1,73 @@
+<!-- by Scott Moscarello -->
+<!-- https://www.youtube.com/watch?v=aISMFLKUC8o -->
+<!-- axios cdn -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StarWars API</title>
-    <link rel="stylesheet" type="text/css" href="starwars.css">
- </head>
+    <title>Star Wars API</title>
+
+    <!-- link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.8/css/font" -->
+    <link rel="stylesheet" href="./starWars.css">
+
+</head>
 <body>
-    <h1>
-        <a href="https://swapi.dev/" target="_blank" rel="noreferrer">SWAPI</a>
-        Exercise
-      </h1>
-      <main>
-        <div class="listbox">
-          <table id="shiplist">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Length</th>
-                <th>Crew</th>
-              </tr>
-            </thead>
-  
-            <tbody></tbody>
-          </table>
-  
-          <a id="prev" href="#">&lt;-Prev</a> <a id="next" href="#">Next -&gt;</a>
+    <h1 id="title">StarWars API Demo</h1>
+    <div id="box1">   
+        <div id="part1">
+            <h1>
+                <a href="https://swapi.dev/" target="_blank" rel="noreferrer">SWAPI</a>
+                Exercise
+            </h1>
+            <main>
+                <div class="listbox">
+                <table id="shiplist">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Length</th>
+                        <th>Crew</th>
+                    </tr>
+                    </thead>
+        
+                    <tbody></tbody>
+                </table>
+        
+                <a id="prev" href="#">&lt;-Prev</a> <a id="next" href="#">Next -&gt;</a>
+                </div>
+                <div id="detailsbox" class="hidden">
+                <dl>
+                    <dt>Name:</dt>
+                    <dd class="name"></dd>
+                    <dt>Model:</dt>
+                    <dd class="model"></dd>
+                    <dt>Class:</dt>
+                    <dd class="class"></dd>
+                    <dt>*Movies:</dt>
+                    <dd class="movies"></dd>
+                </dl>
+                </div>
+            </main>
         </div>
-        <div id="detailsbox" class="hidden">
-          <dl>
-            <dt>Name:</dt>
-            <dd class="name"></dd>
-            <dt>Model:</dt>
-            <dd class="model"></dd>
-            <dt>Class:</dt>
-            <dd class="class"></dd>
-            <dt>*Movies:</dt>
-            <dd class="movies"></dd>
-          </dl>
+        <div id="part2">
+            
+
+            <div class="info-container">
+                <p>Name</p>
+                <h1 id="names"></h1>
+                <p>Height</p>
+                <h1 id="heights"></h1>
+                <p>Gender</p>
+                <h1 id="genders"></h1>
+            </div>
+                
+            <button type="button" id="button" name="button">Click for Random person</button>
         </div>
-      </main>
-  
-      <script src="swapi-promises.js"></script>
+    <!-- script -->    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js" integrity="sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="starWars.js" charset="utf-8"></script>
+    </div>
 </body>
 </html>
