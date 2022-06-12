@@ -5,10 +5,12 @@ let genders = document.querySelector('#genders')
 let movies = document.querySelector('#movies')
 
 function getInfo() {
-    let randomNumber = Math.floor((Math.random() *83) +1)
+    let randomNumber = Math.floor((Math.random() *84) +1)
     let apiUrl = 'https://swapi.dev/api/people/' + randomNumber
     axios.get(apiUrl).then(function(response){
         updateInfo(response.data)
+    }).catch(e => {
+        console.log('There was an error')
     })
     /*axios.get('https://swapi.dev/api/people/1').then(function(response){
         updateInfo(response.data)
