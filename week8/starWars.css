@@ -4,39 +4,42 @@
 }
 
 html{
-    background-image: url("https://cdn.pixabay.com/photo/2021/11/08/23/03/warp-speed-6780299_1280.jpg");
+    /*background: url("https://www.youtube.com/watch?v=al93dC3vqws");*/
+   background-image: url("https://cdn.pixabay.com/photo/2016/09/08/12/00/stars-1654074_1280.jpg");
     display: grid;
     background-color: black;
     color: whitesmoke;
 }
 
 body{
-    
+    width: 100vw;
     margin-top: 10vh;
-    margin-right: 5vw;
-    margin-left: 5vw;
+   
 }
 
-#title {
+#title {   
     text-align: center;
 }
 
 #part2, #part1, #title {
     background-color: black;
-    min-width: 45%;
     margin: 10px;
     border-style: groove;
     border-color: gold;
 }
 
-#box1{
-    display: flex;
+#part2, #part1 {
+    width: 48%;
 }
 
-.info-container {   
-    border-style: double;
-    border-color: bisque;
+#box1{
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    
 }
+
+
 
 /* teachers css*/
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
