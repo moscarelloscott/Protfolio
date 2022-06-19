@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sounds of HTML</title>
+    <style>
+       body {
+  margin: 0;
+  padding: 0;
+  background-color: #1d1f20;
+  background-image:
+    radial-gradient(
+      circle at top center,
+      #a5bdc9,
+      #1d1f20
+    );
+}
+
+.keys {
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.key {
+  border: 4px solid #369;
+  border-radius: 8px;
+  margin: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem .5rem;
+  transition: all 100ms;
+  width: 100px;
+  text-align: center;
+  color: white;
+  background: #368DDA;
+  cursor: pointer;
+}
+
+.playing {
+  transform: scale(1.2);
+  border-color: #ffc600;
+  box-shadow: 0 0 12px #ffc600;
+}
+
+kbd {
+  display: block;
+  font-size: 40px;
+  font-family: courier;
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.sound {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #246;
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+    </style>
+</head>
+<body>
+    <div class="keys">
+        <div data-key="65" class="key">
+          <kbd>A</kbd>
+          <span class="sound">clap</span>
+        </div>
+        <div data-key="83" class="key">
+          <kbd>S</kbd>
+          <span class="sound">hihat</span>
+        </div>
+        <div data-key="68" class="key">
+          <kbd>D</kbd>
+          <span class="sound">kick</span>
+        </div>
+        <div data-key="70" class="key">
+          <kbd>F</kbd>
+          <span class="sound">openhat</span>
+        </div>
+        <div data-key="71" class="key">
+          <kbd>G</kbd>
+          <span class="sound">boom</span>
+        </div>
+        <div data-key="72" class="key">
+          <kbd>H</kbd>
+          <span class="sound">ride</span>
+        </div>
+        <div data-key="74" class="key">
+          <kbd>J</kbd>
+          <span class="sound">snare</span>
+        </div>
+        <div data-key="75" class="key">
+          <kbd>K</kbd>
+          <span class="sound">tom</span>
+        </div>
+        <div data-key="76" class="key">
+          <kbd>L</kbd>
+          <span class="sound">tink</span>
+        </div>
+      </div>
+    
+      <audio data-key="65"></audio>
+      <audio data-key="83"></audio>
+      <audio data-key="68"></audio>
+      <audio data-key="70"></audio>
+      <audio data-key="71"></audio>
+      <audio data-key="72"></audio>
+      <audio data-key="74"></audio>
+      <audio data-key="75"></audio>
+      <audio data-key="76"></audio>
+    
+    <script>
+        const keys = Array.from( document.querySelectorAll('.key') );
+const sounds = Array.from( document.querySelectorAll('audio') );
+const drumRoot = "https://raw.githubusercontent.com/run-time/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/";
+const drumSounds = {
+  "65": "clap.wav",
+  "83": "hihat.wav",
+  "68": "kick.wav",
+  "70": "openhat.wav",
+  "71": "boom.wav",
+  "72": "ride.wav",
+  "74": "snare.wav",
+  "75": "tom.wav",
+  "76": "tink.wav"
+};
+
+function init() {
+  // set the audio src attributes
+  sounds.forEach( snd => snd.src = drumRoot + drumSounds[snd.getAttribute("data-key")] );
+  
+  // listen for keyboard events
+  window.addEventListener('keydown', onKeyDown);
+  
+  // listen for clicks and transition end on keys
+  keys.forEach(key => { 
+    key.addEventListener('transitionend', onTransitionEnd);
+    key.addEventListener('mousedown', onMouseDown);
+  });
+}
+
+function onTransitionEnd(e) {
+  if (e.propertyName === 'transform') {
+    e.target.classList.remove('playing');
+  }
+}
+
+function onMouseDown(e) {
+  const key = e.target;
+  const audio = document.querySelector('audio[data-key="' + e.target.getAttribute("data-key") + '"]');
+  playSound(key, audio);
+}
+
+function onKeyDown(e) {
+  const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  playSound(key, audio);
+}
+
+function playSound(key, audio) {
+  if (key && audio) {
+    key.classList.add('playing');
+    audio.currentTime = 0;
+    audio.play();
+  }
+}
+
+init();
+
+    </script>
+</body>
+</html>
